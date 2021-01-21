@@ -2,8 +2,8 @@
 
 ## y = Wx+b
 
-![Linear](imgs/Linearregression.png)
-![IncorrectlyLinear](imgs/IncorrectlylabeledData.png)
+![Linear](imgs/Linearregression.png =200x)
+![IncorrectlyLinear](imgs/IncorrectlylabeledData.png =200x)
 ## 수치미분으로 구하기
 
 예측하는 parameters  
