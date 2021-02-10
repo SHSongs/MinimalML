@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from model import UNet
 
 from torch.utils.data import DataLoader
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 
 from torchvision import transforms, datasets
 
@@ -25,9 +25,9 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 ## data loader
 
 class Dataset(torch.utils.data.Dataset):
-    def __init__(self, data_dir, tarnsform=None):
+    def __init__(self, data_dir, transform=None):
         self.data_dir = data_dir
-        self.transform = tarnsform
+        self.transform = transform
 
         lst_data = os.listdir(self.data_dir)
 
@@ -65,7 +65,56 @@ class Dataset(torch.utils.data.Dataset):
 
 ##
 
-dataset_train = Dataset(data_dir='./datasets/train')
+
+class ToTensor(object):
+    def __call__(self, data):
+        label, input = data['label'], data['input']
+
+        label = label.transpose((2, 0, 1)).astype(np.float32)
+        input = input.transpose((2, 0, 1)).astype(np.float32)
+
+        data = {'label': torch.from_numpy(label), 'input': torch.from_numpy(input)}
+
+        return data
+
+
+class Normalization(object):
+    def __init__(self, mean=0.5, std=0.5):
+        self.mean = mean
+        self.std = std
+
+    def __call__(self, data):
+        label, input = data['label'], data['input']
+
+        input = (input - self.mean) / self.std
+
+        data = {'label': label, 'input': input}
+
+        return data
+
+
+class RandomFlip(object):
+    def __call__(self, data):
+        label, input = data['label'], data['input']
+
+        if np.random.rand() > 0.5:
+            label = np.fliplr(label)
+            input = np.fliplr(input)
+
+        if np.random.rand() > 0.5:
+            label = np.flipud(label)
+            input = np.flipud(input)
+        data = {'label': label, 'input': input}
+
+        return data
+
+
+##
+
+
+##
+transform = transforms.Compose([Normalization(), RandomFlip(), ToTensor()])
+dataset_train = Dataset(data_dir='./datasets/train', transform=transform)
 
 ##
 data = dataset_train.__getitem__(0)
@@ -83,6 +132,4 @@ plt.imshow(input.squeeze())
 plt.title('input')
 
 plt.show()
-
-##
 
