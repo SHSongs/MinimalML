@@ -6,7 +6,7 @@ import os
 result_dir = './results/numpy'
 
 lst_data = os.listdir(result_dir)
-
+ 
 lst_label = [f for f in lst_data if f.startswith('label')]
 lst_input = [f for f in lst_data if f.startswith('input')]
 lst_output = [f for f in lst_data if f.startswith('output')]

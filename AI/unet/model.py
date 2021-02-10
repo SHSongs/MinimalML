@@ -117,9 +117,3 @@ class UNet(nn.Module):
         x = self.fc(dec1_1)
 
         return x
-
-
-##
-model = UNet()
-out = model(torch.rand(1, 1, 1024, 512))
-print(out)
