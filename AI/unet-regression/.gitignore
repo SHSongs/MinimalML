@@ -1,3 +1,6 @@
 /.idea
 /datasets
 /__pycache__
+/ckpt2
+/log2
+/res2
