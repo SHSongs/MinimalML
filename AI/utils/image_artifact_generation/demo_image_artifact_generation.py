@@ -37,7 +37,7 @@ def print_imgs():
 
     plt.show()
 
-def print_imgs_args(i1, i2, i3):
+def print_imgs_args (i1, i2, i3):
     plt.subplot(131)
     plt.imshow(np.squeeze(i1), cmap=cmap, vmin=0, vmax=1)
     plt.title("Ground Truth")
