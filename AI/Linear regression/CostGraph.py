@@ -19,6 +19,11 @@ for b in blist:
     cost = np.sum((hypothesis - y_train) ** 2) / n_data
     costs.append(cost)
 
+    h = 0.001
+
+    hypothesis_w_up = x_train * (W + h) + b
+    hypothesis_b_up = x_train * W + (b + h)
+
 
 x_predict = np.array(list(range(-3, 7)))
 y_predict = x_predict * W + b
