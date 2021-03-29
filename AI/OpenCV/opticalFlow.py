@@ -40,13 +40,11 @@ while cap.isOpened():
         # 추적 시작을 위한 코너 검출  ---①
         prevPt = cv2.goodFeaturesToTrack(prevImg, 200, 0.01, 10)
     else:
-
         nextImg = gray
-        # 옵티컬 플로우로 다음 프레임의 코너점  찾기 ---②
+
         nextPt, status, err = cv2.calcOpticalFlowPyrLK(prevImg, nextImg, \
                                                        prevPt, None, criteria=termcriteria)
 
-        # 대응점이 있는 코너, 움직인 코너 선별 ---③
         prevMv = prevPt[status == 1]
         nextMv = nextPt[status == 1]
         vec = prevMv - nextMv
