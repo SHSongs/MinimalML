@@ -49,5 +49,31 @@ YOLO와 Fast R-CNN이 결합하였을 때 mAP가 3.2 상승한다.
 
 YOLO의 Network 설계는 GoogleLeNet classification을 기반으로 한다.
 
+논문에서는 7 * 7 grid    
+B(bounding box) = 2  
+class = 20 개를 사용해  
+
+S * S * (B * 5 + C)  
+7 * 7 * 30 의 tensor가 output이다  
+
+98개의 class specific confidence score를 얻을 수 있다
+
+### Loss
+기호  
+(1) Object가 존재하는 grid cell i의 predictor bounding box j  
+(2) Object가 존재하지 않은 grid cell i의 bounding box j  
+(3) Object가 존재하는 grid cell i  
+
+
+1. (1)의, x와 y의 loss
+2. (1)의, w와 h의 loss 제곱근을 이용해 큰 box의 error를 작게 한다
+3. (1)의, confidence score의 loss. (Ci = 1)
+4. (2)의, confidence score의 loss. (Ci = 0)
+5. (3)의, conditional class probability의 loss. (Correct class c:pi(c)=1, otherwise:pi(c)=0)   
+
+
+## Limitation of YOLO
+
+
 ### Reference
 [curt-park yolo](https://curt-park.github.io/2017-03-26/yolo/)
