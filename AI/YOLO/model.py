@@ -105,15 +105,9 @@ class Yolov1(nn.Module):
     def _create_fcs(self, split_size, num_boxes, num_classes):
         S, B, C = split_size, num_boxes, num_classes
 
-        # In original paper this should be
-        # nn.Linear(1024*S*S, 4096),
-        # nn.LeakyReLU(0.1),
-        # nn.Linear(4096, S*S*(B*5+C))
-
         return nn.Sequential(
             nn.Flatten(),
-            nn.Linear(1024 * S * S, 496),
-            nn.Dropout(0.0),
+            nn.Linear(1024 * S * S, 4096),
             nn.LeakyReLU(0.1),
-            nn.Linear(496, S * S * (C + B * 5)),
+            nn.Linear(4096, S*S*(B*5+C))
         )
