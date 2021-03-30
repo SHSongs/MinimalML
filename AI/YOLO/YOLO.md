@@ -22,7 +22,7 @@ YOLO는 이미지 내의 bounding box와 class probability를
 - Object에 대한 일반화된 특징을 학습한다. natural image로 학습 후 artwork에서 태스트했을때 다른 모델보다 더 높은 성능을 보여준다.
 
 #### 단점 
-작은 오브젝트, 새때같이 그룹 지어 나타낸 오브젝트에 대한 낮은 정확도
+- 작은 오브젝트, 새때같이 그룹 지어 나타낸 오브젝트에 대한 낮은 정확도
 
 
 
@@ -38,7 +38,7 @@ YOLO와 Fast R-CNN이 결합하였을 때 mAP가 3.2 상승한다.
 
 ## Unified Detection
 
-1. Input Image를 S * S grid로 나눈다
+1. Input Image를 S * S grid로 나눈다.
 2. 각 grid cell은 B개의 bounding box(x,y,w,h)와 각 bounding box에 대한 confidence score(c)를 갖는다. 
 3. 각 grid cell은 C개의 conditional class probability를 갖는다.
 4. 각 bounding box는 x, y, w, h, confidence로 구성된다.
@@ -74,6 +74,10 @@ S * S * (B * 5 + C)
 
 ## Limitation of YOLO
 
-
+- 각 grid cell 당 하나의 클래스만 예측 가능
+- bounding box는 training data를 통해서만 학습, 새롭거나 독특한 형태의 bounding box는 정확해 예측하지 못함
+- loss function은 큰 bounding box 와 작은 bounding box를 같게 대함 (큰 box의 작은 error는 유순함, 그러나 작은 box의 작은 error는 IOU에 많은 영향을 줌)
+  
+### [Demo](https://www.youtube.com/watch?v=EJy0EI3hfSg) 
 ### Reference
 [curt-park yolo](https://curt-park.github.io/2017-03-26/yolo/)
