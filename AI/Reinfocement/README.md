@@ -1,21 +1,20 @@
 # DQN 
-
+[Playing Atari with Deep Reinforcement Learning](https://arxiv.org/abs/1312.5602)  
 
 ## 요약 
 
-고차원의 센서 인풋으로부터 정책을 배우는 것에 성공한 첫 번째 딥러닝 모델이다.
-convolutional neural network를 사용했고 Q-learning의 변종으로 학습했다.
-input은 원시 픽셀 output은 미래 보상을 추정 가치함수.
-architectures나 learning algorithms 조정 없이. Atari 2600 게임에 이 방법 적용.
- 여섯 개의 게임에서 이전의 모든 접근법보다 뛰어나다. 그리고 그중 3개는 인간의 노력을 뛰어넘는다.
-
+고차원의 센서 인풋으로부터 정책을 배우는 것에 성공한 첫 번째 딥러닝 모델이다.  
+convolutional neural network를 사용했고 Q-learning의 변종으로 학습했다.  
+input은 원시 픽셀 output은 미래 보상을 추정하는 가치함수.  
+Atari 2600 게임에서 architectures나 learning algorithms 조정 없이 사용하였다.  
+ 여섯 개의 게임에서 이전의 모든 접근법보다 뛰어나다. 그리고 그중 3개는 인간의 실력을 뛰어넘는다.  
 
 
 ## 소개
 
 비전이나 말 같은 고차원의 인풋으로부터 agents를 직접 컨트롤하는 것을 배우는 것은 RL의 긴 난제였다.  
 많은 성공적인 RL applications은 이러한 것들을 선형 함수나 정책 표현과 결합한 수작업으로 조작된 기능에 의존했다.  
-분명히, 이러한 시스템의 성능은 feature representation에 의존한다.
+분명히, 이러한 시스템의 성능은 feature representation에 의존한다.  
 최근 딥러닝의 발전은 원시 센서 데이터로부터 높은 수준의 특징을 추출하는것을 가능하게 만들었다.  
 컴퓨터 비전과 음성인식의 돌파구이다.  
 이 방법들은 convolutional networks, 다층 퍼셉트론, 볼츠만 머신과 반복 neural networks을 포함하여 다양한 neural network architectures 와 지도학습, 비지도학습을 모두 활용했다.  
@@ -23,8 +22,8 @@ architectures나 learning algorithms 조정 없이. Atari 2600 게임에 이 방
 
 ## Deep Reinforcement Learning
 
-210*160 pixel image를 흑백과 다운 샘플링 110*84 한뒤
-플레이화면 84*84 크롭 (정사각형 인풋이 필요한, 2d convolution GPU구현이기 때문에)  
+210\*160 pixel image를 흑백과 다운 샘플링 110\*84 한뒤
+플레이화면 84\*84 크롭 (정사각형 인풋이 필요한, 2d convolution GPU구현이기 때문에)  
 마지막 4 프레임으로  
 Q-function에 대한 입력을 생산하기 위해  
 
@@ -35,7 +34,8 @@ neural network 를 사용해 Q를 파라미터화 하는 방법
 
 ### 네트워크 구조
 
-84*84*4 크기의 input  
+```
+84\*84\*4 크기의 input  
 
 8*8 conv stride 4  16개  
 relu  
@@ -46,14 +46,15 @@ relu
 256 fully-connected layer  
 relu  
 
-가능한 각 액션  
-
+가능한 각 액션  (4 ~ 16 사이)
+```
 convolutional networks로 학습된 접근법을 Deep Q-learning(DQN) 이라 한다.  
 
 
 ## 실험 
-7개의 ATARI game에서 실험을 했다.  
-같은 architectures를 사용했다.  
+7개의 ATARI game에서 같은 architectures를 사용했다.  
+
+
 모든 긍정 reward는 1로 부정 reward는 -1로  
 
 frame-skipping을 사용했다;  
