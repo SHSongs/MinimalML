@@ -9,4 +9,4 @@
 - [U-net](AI/Vision/unet-regression)
 
 ## Reinforcement Learning
-- [DQN](AI/Reinfocement)
+- [DQN](AI/Reinfocement/DQN)
