@@ -95,6 +95,7 @@ def add_noise(img, type='random', opts=None):
 
 ## Add blurring
 def add_blur(img, type="bilinear", opts=None):
+    order = 1
     if type == "nearest":
         order = 0
     elif type == "bilinear":
