@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-data_dir = 'super_resolution'
+data_dir = 'ramdom'
 
 lst_data = os.listdir(data_dir)
 
@@ -17,20 +17,26 @@ def list_chunk(lst, n):
 lst_data = list_chunk(lst_data, 3)
 
 full = []
-for idx in lst_data:
-    vmlst = []
+for val_set in lst_data:
+    hmlst = []
 
     for i in [1, 0, 2]:
-        s = cv2.imread(os.path.join(data_dir, idx[i]))
-        vmlst.append(s)
+        s = cv2.imread(os.path.join(data_dir, val_set[i]))
+        hmlst.append(s)
 
         print(lst_data[0][i])
 
-    addh = cv2.hconcat(vmlst)
+    addh = cv2.hconcat(hmlst)
+    text = val_set[0][0:4]
+    sz = addh.shape
+    org = (sz[1] - 100, sz[0] - 250)
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    cv2.putText(addh, text, org, font, 1, (255, 255, 0), 5)
+
     full.append(addh)
 
 addv = cv2.vconcat(full)
 cv2.imshow('', addv)
-cv2.imwrite('super_resolution.png', addv)
+cv2.imwrite('random.png', addv)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
