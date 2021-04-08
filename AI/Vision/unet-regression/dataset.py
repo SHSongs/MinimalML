@@ -23,11 +23,16 @@ class Dataset(torch.utils.data.Dataset):
 
         self.lst_data = lst_data
 
+        self.img_lst = []
+
+        for i in range(len(lst_data)):
+            self.img_lst.append(plt.imread(os.path.join(self.data_dir, self.lst_data[i])))
+
     def __len__(self):
         return len(self.lst_data)
 
     def __getitem__(self, index):
-        img = plt.imread(os.path.join(self.data_dir, self.lst_data[index]))
+        img = self.img_lst[index]
         sz = img.shape
 
         if sz[0] > sz[1]:
@@ -52,7 +57,6 @@ class Dataset(torch.utils.data.Dataset):
 
         if self.transform:
             data = self.transform(data)
-
 
         data = {'input': input, 'label': label}
 

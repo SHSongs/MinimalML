@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-data_dir = 'ramdom'
+data_dir = 'super_resolution'
 
 lst_data = os.listdir(data_dir)
 
@@ -31,6 +31,6 @@ for idx in lst_data:
 
 addv = cv2.vconcat(full)
 cv2.imshow('', addv)
-cv2.imwrite('aa.png', addv)
+cv2.imwrite('super_resolution.png', addv)
 cv2.waitKey(0)
 cv2.destroyAllWindows()

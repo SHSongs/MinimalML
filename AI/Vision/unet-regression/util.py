@@ -68,8 +68,6 @@ def add_sampling(img, type='random', opts=None):
 
         gaus = a * np.exp(-((x - x0)**2 / (2 * sgmx**2) + (y - y0)**2/(2*sgmy**2)))
         gaus = np.tile(gaus[:, :, np.newaxis], (1,1,sz[2]))
-        plt.imshow(gaus)
-        plt.show()
         rnd = np.random.rand(sz[0], sz[1], sz[2])
         msk = (rnd < gaus).astype(np.float)
 
