@@ -105,7 +105,7 @@ if mode == 'train':
     loader_train = DataLoader(dataset_train, batch_size=batch_size, shuffle=True, num_workers=0)
 
     dataset_val = Dataset(data_dir=os.path.join(data_dir, 'val'), transform=transform_val, task=task, opts=opts)
-    loader_val = DataLoader(dataset_train, batch_size=batch_size, shuffle=True, num_workers=0)
+    loader_val = DataLoader(dataset_val, batch_size=batch_size, shuffle=True, num_workers=0)
 
     num_data_train = len(dataset_train)
     num_data_val = len(dataset_val)

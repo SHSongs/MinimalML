@@ -2,7 +2,7 @@ import cv2
 import os
 import numpy as np
 
-data_dir = 'ramdom'
+data_dir = 'inpainting'
 
 lst_data = os.listdir(data_dir)
 
@@ -37,6 +37,6 @@ for val_set in lst_data:
 
 addv = cv2.vconcat(full)
 cv2.imshow('', addv)
-cv2.imwrite('random.png', addv)
+cv2.imwrite('inpainting.png', addv)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
