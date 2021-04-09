@@ -1,8 +1,8 @@
 # Paper
 
 ## AI Basic
-- [Liner regression](AI/Basic/LinearRegression)
-- [LinearRegressionVisualization](AI/Basic/LinearRegressionVisualization)
+- [Linear Regression](AI/Basic/LinearRegression)
+- [Linear Regression Visualization](AI/Basic/LinearRegressionVisualization)
   
 ## Vision
 - [YOLO](AI/Vision/YOLO)

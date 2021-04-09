@@ -1,4 +1,5 @@
 ## Gradient Dscent
+### [Blog](https://shsongs.github.io/Linear-Regression/)  
 
 선행지식 : 일차함수, Numpy 기초   
 

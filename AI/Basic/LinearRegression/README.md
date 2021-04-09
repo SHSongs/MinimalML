@@ -1,5 +1,6 @@
 # 선형회귀
 
+### [Blog](https://shsongs.github.io/Linear-Regression-%EA%B5%AC%ED%98%84/)  
 ## y = Wx+b
 
 ![Linear](imgs/Linearregression.png)
