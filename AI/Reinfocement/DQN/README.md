@@ -68,3 +68,10 @@ emulator를 진행시키는 것은 agent가 action을 선택하는것보다 훨�
 모든 게임은 k = 4 를 이용하였다.  
 
 예외) Space Invanders는 k = 4로 하면 레이저를 볼 수 없어 k = 3으로 했다.  
+
+
+
+## Conclusion
+강화학습을 위한 새로운 딥러닝 모델을 소개한다. 그리고 Atari 2600에서 어려운 정책 컨트롤 마스터 능력을 입증했다. 오직 raw pixels을 input으로.   
+online Q-learning의 변종을 제시한다; 확률적 미니배치 업데이트 RL에서 deep network training을 용이하게하는 경험 리플레이 메모리.  
+이 접근법은 테스트된 7개의 게임중 6개에서 state-of-the-art 결과를 준다; architecture or hyperparameters 조정 없이.
