@@ -1,6 +1,6 @@
 # Paper
 
-## AI Basic
+## ML Basic
 - [Linear Regression](AI/Basic/LinearRegression)
 - [Linear Regression Visualization](AI/Basic/LinearRegressionVisualization)
   
