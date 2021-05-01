@@ -48,6 +48,15 @@ Downsampling으로 해상도가 떨어짐, feature map의 channel 수가 늘어�
 localization,  
 Upsampling으로 해상도를 높임, feature map의 크기가 늘어남, 넓고 앏아짐 
 
+
+### 학습 방법
+- Overlap-tile strategy: 큰 이미지를 겹치는 부분이 있도록 나눠 input으로 활용
+- Mirroring Extrapolate: 이미지의 경계(Border) 부분을 거울이 반사된 것처럼 확장해 input으로 활용
+- Weight Loss: 객체간 경계를 구분할 수 있도록 Weight Loss 구성
+- Data Augmentation: 데이터 증강
+
+#### Weight Loss
+작은 경계를 분리해야한다. 각 픽셀이 경계와 얼마나 가까운지에 따른 Weight-Map 구성, 경계에 가까운 픽셀의 Loss를 Weight-Map에 비례하게 증가시켜 경계를 잘 학습하게 한다.
 ## [Result](result/README.md)
 
 Reference :  
